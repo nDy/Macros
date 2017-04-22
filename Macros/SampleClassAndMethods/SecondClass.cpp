@@ -20,6 +20,15 @@ int SecondClass::RandomMethodThatCallsSampleClass() {
 	return 1;
 }
 
+int SecondClass::Factorial(int int1) {
+	if (int1 == 1){
+		return 1;
+	}
+	else{
+		return int1*this->Factorial(int1-1);
+	}
+}
+
 SecondClass::~SecondClass() {
 	delete this->Sample;
 }

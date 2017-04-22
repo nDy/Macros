@@ -15,6 +15,7 @@ public:
 	SampleClass* Sample;
 	SecondClass();
 	int RandomMethodThatCallsSampleClass();
+	int Factorial(int);
 	virtual ~SecondClass();
 };
 
