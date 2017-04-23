@@ -15,10 +15,13 @@ int main() {
 	m = new ManagerCV();
 
 	m->loadFromFile("snap.png",ManagerCV::COLOR);
+	std::vector<double> colorpix = m->getPixel(10,10);
+	std::cout<<"Vector Dimensions: "<<colorpix.size()<<std::endl;
+	std::cout<<"Pixel GRB: "<<colorpix[0]<<","<<colorpix[1]<<","<<colorpix[2]<<std::endl;
 	m->goColorSwap(ManagerCV::BGR2GRAY);
-	m->showImage("Squanch",ManagerCV::NORMALSIZE);
-
-	cv::waitKey(0);
+	std::vector<double> graypix = m->getPixel(10,10);
+	std::cout<<"Vector Dimensions: "<<graypix.size()<<std::endl;
+	std::cout<<"Pixel GRAYSCALE: "<<graypix[0]<<std::endl;
 
 	return 0;
 }

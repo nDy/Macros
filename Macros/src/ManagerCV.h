@@ -17,7 +17,6 @@
 class ManagerCV {
 private:
 	cv::Mat image;
-	int loadflag;
 
 public:
 
@@ -36,7 +35,7 @@ public:
 		HLS2BGR = CV_HLS2BGR
 	};
 
-	enum WWINDOWFLAGS{
+	enum WINDOWFLAGS{
 		NORMALSIZE = CV_WINDOW_NORMAL,
 		AUTOSIZE = CV_WINDOW_AUTOSIZE
 	};
@@ -53,7 +52,7 @@ public:
 
 	void showImage(std::string,int);
 
-	void getPixel(int,int);
+	std::vector<double> getPixel(int,int);
 
 	virtual ~ManagerCV();
 };
