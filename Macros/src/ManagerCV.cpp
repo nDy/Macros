@@ -10,6 +10,10 @@
 ManagerCV::ManagerCV() {
 }
 
+ManagerCV::ManagerCV(cv::Mat mat) {
+	this->image = mat;
+}
+
 void ManagerCV::loadFromFile(std::string path, int flag) {
 	this->image = cv::imread(path, flag);
 }
@@ -111,6 +115,25 @@ void ManagerCV::setPixel(int row, int col, std::vector<double> vec) {
 	}
 
 	}
+}
+
+int ManagerCV::getRows() {
+	return this->image.rows;
+}
+
+int ManagerCV::getCols() {
+	return this->image.cols;
+}
+
+void ManagerCV::filter(cv::Mat kernel) {
+	cv::Mat mat;
+	cv::filter2D(this->image,mat,this->image.depth(),kernel);
+}
+
+void ManagerCV::linearBlend(cv::Mat mat, float alpha) {
+	cv::Mat tmp;
+	cv::addWeighted(this->image,alpha,mat,(1-alpha),0.0,tmp);
+	this->image = tmp;
 }
 
 ManagerCV::~ManagerCV() {

@@ -42,6 +42,16 @@ public:
 
 	ManagerCV();
 
+	ManagerCV(cv::Mat);
+
+	const cv::Mat& getImage() const {
+		return image;
+	}
+
+	void setImage(const cv::Mat& image) {
+		this->image = image;
+	}
+
 	void loadFromFile(std::string,int);
 
 	void saveToFile(std::string);
@@ -56,7 +66,16 @@ public:
 
 	void setPixel(int,int,std::vector<double>);
 
+	int getRows();
+
+	int getCols();
+
+	void filter(cv::Mat);
+
+	void linearBlend(cv::Mat,float);
+
 	virtual ~ManagerCV();
+
 };
 
 #endif /* MANAGERCV_H_ */
