@@ -54,6 +54,8 @@ public:
 
 	std::vector<double> getPixel(int,int);
 
+	void setPixel(int,int,std::vector<double>);
+
 	virtual ~ManagerCV();
 };
 

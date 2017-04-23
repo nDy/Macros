@@ -71,6 +71,48 @@ std::vector<double> ManagerCV::getPixel(int Row, int Col) {
 	return out;
 }
 
+void ManagerCV::setPixel(int row, int col, std::vector<double> vec) {
+
+	switch (this->image.channels()) {
+
+	case 1: {
+		if (this->image.depth() == CV_8U)
+			this->image.at<uchar>(row, col, 0) = vec[0];
+		else
+			this->image.at<schar>(row, col, 0) = vec[0];
+		break;
+	}
+	case 2: {
+		for (int var = 0; var < this->image.channels(); ++var) {
+			if (this->image.depth() == CV_32F or this->image.depth() == CV_64F)
+				this->image.at<cv::Vec2f>(row, col, var) = vec[var];
+			else
+				this->image.at<cv::Vec2b>(row, col, var) = vec[var];
+		}
+		break;
+	}
+	case 3: {
+		for (int var = 0; var < this->image.channels(); ++var) {
+			if (this->image.depth() == CV_32F or this->image.depth() == CV_64F)
+				this->image.at<cv::Vec3f>(row, col, var) = vec[var];
+			else
+				this->image.at<cv::Vec3b>(row, col, var) = vec[var];
+		}
+		break;
+	}
+	case 4: {
+		for (int var = 0; var < this->image.channels(); ++var) {
+			if (this->image.depth() == CV_32F or this->image.depth() == CV_64F)
+				this->image.at<cv::Vec4f>(row, col, var) = vec[var];
+			else
+				this->image.at<cv::Vec4b>(row, col, var) = vec[var];
+		}
+		break;
+	}
+
+	}
+}
+
 ManagerCV::~ManagerCV() {
 }
 
