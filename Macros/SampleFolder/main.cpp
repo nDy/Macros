@@ -8,7 +8,7 @@
 
 #include "../SampleClassAndMethods/SampleClass.h"
 
-int main(int argc, char **argv) {
+int notmain(int argc, char **argv) {
 	SampleClass* instance;
 	instance = new SampleClass();
 

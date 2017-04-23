@@ -7,9 +7,18 @@
 //============================================================================
 
 #include <iostream>
-using namespace std;
+#include "ManagerCV.h"
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	ManagerCV* m;
+
+	m = new ManagerCV();
+
+	m->loadFromFile("snap.png",ManagerCV::COLOR);
+	m->goColorSwap(ManagerCV::BGR2GRAY);
+	m->showImage("Squanch",ManagerCV::NORMALSIZE);
+
+	cv::waitKey(0);
+
 	return 0;
 }

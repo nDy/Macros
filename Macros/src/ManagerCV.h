@@ -8,12 +8,15 @@
 #ifndef MANAGERCV_H_
 #define MANAGERCV_H_
 
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+
 #include <string>
 
 class ManagerCV {
 private:
-	Mat image;
+	cv::Mat image;
 	int loadflag;
 
 public:
@@ -34,8 +37,8 @@ public:
 	};
 
 	enum WWINDOWFLAGS{
-		NORMAL = WINDOW_NORMAL,
-		AUTOSIZE = WINDOW_AUTOSIZE
+		NORMALSIZE = CV_WINDOW_NORMAL,
+		AUTOSIZE = CV_WINDOW_AUTOSIZE
 	};
 
 	ManagerCV();
@@ -44,7 +47,7 @@ public:
 
 	void saveToFile(std::string);
 
-	Mat getColorSwap(int);
+	cv::Mat getColorSwap(int);
 
 	void goColorSwap(int);
 

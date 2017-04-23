@@ -8,34 +8,38 @@
 #include "ManagerCV.h"
 
 ManagerCV::ManagerCV() {
+	this->loadflag = 0;
 }
 
 void ManagerCV::loadFromFile(std::string path, int flag) {
-	this->image = imread(path, flag);
-	this->loadflag = flag
+	this->image = cv::imread(path, flag);
+	this->loadflag = flag;
 }
 
 void ManagerCV::saveToFile(std::string path) {
-	imwrite(path, this->image);
+	cv::imwrite(path, this->image);
 }
 
-Mat ManagerCV::getColorSwap(int flag) {
-	Mat img;
-	cvtColor(this->image, img, flag);
+cv::Mat ManagerCV::getColorSwap(int flag) {
+	cv::Mat img;
+	cv::cvtColor(this->image, img, flag);
 	return img;
 }
 
 void ManagerCV::showImage(std::string WindowName, int flag) {
-	namedWindow(WindowName, flag);
-	imshow(WindowName, this->image);
+	cv::namedWindow(WindowName, flag);
+	cv::imshow(WindowName, this->image);
 }
 
-Mat ManagerCV::getColorSwap(int colorFlag) {
-	cvtColor(this->image, this->image, colorFlag);
+void ManagerCV::goColorSwap(int colorFlag) {
+	cv::Mat aux;
+	cv::cvtColor(this->image, aux, colorFlag);
+	this->image = aux;
 }
 
 void ManagerCV::getPixel(int int1, int int2) {
 	//Maybe
+	/*
 	for(int i=0; i<A.rows; i++){
 	   for(int j=0; j<A.cols; j++){
 		   	   if(this->loadflag==LOADFLAGS::COLOR){
@@ -45,9 +49,9 @@ void ManagerCV::getPixel(int int1, int int2) {
 		   	   }
 	    }
 	}
+	*/
 }
 
 ManagerCV::~ManagerCV() {
-	delete this->image;
 }
 
