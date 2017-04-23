@@ -40,6 +40,10 @@ public:
 		AUTOSIZE = CV_WINDOW_AUTOSIZE
 	};
 
+	enum BLURLAGS{
+			NORMAL,GAUSSIAN,MEDIAN,BILATERAL
+		};
+
 	ManagerCV();
 
 	ManagerCV(cv::Mat);
@@ -73,6 +77,12 @@ public:
 	void filter(cv::Mat);
 
 	void linearBlend(cv::Mat,float);
+
+	void linearTransform(double,int);
+
+	cv::Mat discreteFourierT();
+
+	void blur(int);
 
 	virtual ~ManagerCV();
 
