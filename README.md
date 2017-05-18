@@ -1,2 +1,2 @@
 # Macros
-C++ macros and examples repository
+C++ macros and examples repository.
